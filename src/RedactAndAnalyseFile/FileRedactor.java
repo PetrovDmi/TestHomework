@@ -9,12 +9,12 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FileRedactor implements WorkWithFile {
     // убрать в мэйн класс, сделать хэшмапу арейлистов
-    //сделать функцию туловеркейс для всего файла и записать в другой файл
     Scanner scanner = new Scanner(System.in);
 
     private File getSourceFile() {
@@ -83,9 +83,10 @@ public class FileRedactor implements WorkWithFile {
     }
 
     public void setTextToLowerCase (ArrayList<String> lines) {
-        for (String line : lines) {
-            line.toLowerCase();
+        for (int i = 0; i < lines.size(); i++) {
+            lines.set(i, lines.get(i).toLowerCase());
         }
+        //lines.replaceAll(String::toLowerCase);
     }
 }
 
